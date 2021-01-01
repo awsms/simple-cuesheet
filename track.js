@@ -1,6 +1,12 @@
 class Track {
 
-	constructor(title, cuePoint) {
+	constructor(artist, title, cuePoint) {
+		if (artist !== '') {
+			this.artist = artist;
+		} else {
+			throw {name:'InvalidInputException', message:'Invalid artist name'};
+		}
+
 		if (title !== '') {
 			this.title = title;
 		} else {
@@ -17,7 +23,7 @@ class Track {
 
 	toString() {
 
-		return ('TITLE "' + this.title + '"\nINDEX 01 ' + this.cuePoint);
+		return ('PERFORMER "' + this.artist + '"\nTITLE "' + this.title + '"\nINDEX 01 ' + this.cuePoint);
 
 	}
 

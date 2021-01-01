@@ -22,8 +22,8 @@ class Album {
 		this.tracks = [];
 	}
 
-	addTrack(title, cuePoint) {
-		this.tracks.push(new Track(title, cuePoint));
+	addTrack(artist, title, cuePoint) {
+		this.tracks.push(new Track(artist, title, cuePoint));
 	}
 
 	deleteTrack(title) {

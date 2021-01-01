@@ -38,7 +38,7 @@
 
 	<fieldset>
 		<span>Enter Artist, Title and total duration of the album</span><br>
-		<input type="text" id="artist" placeholder="Artist"/>
+		<input type="text" id="albumArtist" placeholder="Album Artist"/>
 		<input type="text" id="albumTitle" placeholder="Album Title" />
 		<input type="text" id="duration" placeholder="00:00:00" pattern="[0-9][0-9]:[0-9][0-9]:[0-9][0-9]" oninput="this.reportValidity()" /><br />
 		<button class="button" onclick="setAlbum()">Make Album</button>
@@ -46,6 +46,7 @@
 
 	<fieldset>
 		<span>Add tracks by title and cue point respective to the total duration</span><br>
+		<input type="text" id="trackArtist" placeholder="Track Artist" />
 		<input type="text" id="trackTitle" placeholder="Track Title" />
 		<input type="text" id="cuePoint" placeholder="00:00:00" pattern="[0-9][0-9]:[0-9][0-9]:[0-9][0-9]" oninput="this.reportValidity()" /><br />
 		<button type="submit" class="button" onclick="addTrack()">Add Track</button>

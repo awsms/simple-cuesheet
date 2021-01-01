@@ -43,7 +43,7 @@ function render() {
 
 function setAlbum() {
 
-	let artist = document.querySelector('#artist').value;
+	let albumArtist = document.querySelector('#albumArtist').value;
 	let albumTitle = document.querySelector('#albumTitle').value;
 	let albumDuration = document.querySelector('#duration').value;
 
@@ -51,11 +51,11 @@ function setAlbum() {
 
 	try {
 		if (typeof myAlbum !== 'undefined') {
-			myAlbum.artist = artist;
+			myAlbum.artist = albumArtist;
 			myAlbum.title = albumTitle;
 			myAlbum.duration = albumDuration;
 		} else {
-			myAlbum = new Album(artist, albumTitle, albumDuration);
+			myAlbum = new Album(albumArtist, albumTitle, albumDuration);
 		}
 
 		render();
@@ -67,11 +67,13 @@ function setAlbum() {
 
 function addTrack() {
 
+	let artist = document.querySelector('#trackArtist').value;
 	let title = document.querySelector('#trackTitle').value;
 	let cuePoint = document.querySelector('#cuePoint').value;
 
 	try {
-		myAlbum.addTrack(title, cuePoint);
+		myAlbum.addTrack(artist, title, cuePoint);
+		document.querySelector('#trackArtist').value = '';
 		document.querySelector('#trackTitle').value = '';
 		document.querySelector('#cuePoint').value = '';
 
@@ -125,8 +127,9 @@ function loadFromTextInput() {
 	for(let i=0; i<loadedLines.length; i++) {
 		let currentLineList = loadedLines[i].split(" - ");
 		let currentCue = currentLineList[0].trim() + ":00";
-		let currentTitle = currentLineList[1].trim();
-		myAlbum.addTrack(currentTitle, currentCue);
+		let currentTitle = currentLineList[2].trim();
+		let currentArtist = currentLineList[1].trim();
+		myAlbum.addTrack(currentArtist, currentTitle, currentCue);
 		render();
 	}
 
@@ -142,7 +145,7 @@ function load(loaded) {
 		myAlbum.addTrack(parsed.tracks[i].title, parsed.tracks[i].cuePoint);
 	}
 
-	document.querySelector('#artist').value = myAlbum.artist;
+	document.querySelector('#albumArtist').value = myAlbum.artist;
 	document.querySelector('#albumTitle').value = myAlbum.title;
 	document.querySelector('#duration').value = myAlbum.duration;
 
